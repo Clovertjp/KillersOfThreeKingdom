@@ -1,7 +1,10 @@
 package com.tjp.hero;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import com.tjp.card.Card;
 import com.tjp.card.type.CardType;
@@ -31,14 +34,17 @@ public class Hero implements IHero {
 	private List<IEffect> effectList=new ArrayList<>();//英雄自身效果
 	private CardsManager cardManager;//卡牌管理
 	private static List<CardType> disCardRule=new ArrayList<>();//弃牌规则
-	private static List<CardType> playCardRule=new ArrayList<>();//出牌规则 杀默认最后出
+	private static List<CardType> playCardRule=new ArrayList<>();//出牌规则 桃倒数第二出 杀默认最后出
 	static{
 		disCardRule.add(CardType.KILL);
+		disCardRule.add(CardType.DISCARD);
+		disCardRule.add(CardType.STEALCARD);
 		disCardRule.add(CardType.PEACH);
 		disCardRule.add(CardType.DODGE);
 		
+		playCardRule.add(CardType.STEALCARD);
+		playCardRule.add(CardType.DISCARD);	
 		
-		playCardRule.add(CardType.PEACH);
 	}
 	
 	
@@ -158,10 +164,28 @@ public class Hero implements IHero {
 	public void play(Hero target)
 	{
 		List<Card> delete=new ArrayList<>();
+		
+		for(CardType type:playCardRule)
+		{
+			
+			for(int i=0;i<cardList.size();i++)
+			{
+//				System.out.println("1");
+				Card c=cardList.get(i);
+				if(c.getCardType()==type )
+				{
+					c.play(this, target,delete);
+				}
+			}
+		}
+		
+		
 		if(getBlood()<getMaxBlood())
 		{
-			for(Card c : cardList)
+			Iterator<Card> iter = cardList.iterator();
+			while(iter.hasNext())
 			{
+				Card c=iter.next();
 				if(getBlood()>=getMaxBlood())
 				{
 					break;
@@ -174,9 +198,10 @@ public class Hero implements IHero {
 			
 		}
 		
-		
-		for(Card c : cardList)
+		Iterator<Card> iter1 = cardList.iterator();
+		while(iter1.hasNext())
 		{
+			Card c=iter1.next();
 			if(c.getCardType()==CardType.KILL)
 			{
 				
@@ -198,8 +223,10 @@ public class Hero implements IHero {
 	public void die()
 	{
 		List<Card> delete=new ArrayList<>();
-		for(Card c : cardList)
+		Iterator<Card> iter = cardList.iterator();
+		while(iter.hasNext())
 		{
+			Card c=iter.next();
 			if(c.getCardType()==CardType.PEACH )
 			{
 				c.play(this, null,delete);

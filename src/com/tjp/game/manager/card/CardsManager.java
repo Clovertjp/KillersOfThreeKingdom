@@ -24,6 +24,8 @@ public class CardsManager {
 		map.put(CardType.KILL, 30);
 		map.put(CardType.DODGE, 15);
 		map.put(CardType.PEACH, 8);
+		map.put(CardType.STEALCARD, 5);
+		map.put(CardType.DISCARD, 8);
 	}
 	
 	
