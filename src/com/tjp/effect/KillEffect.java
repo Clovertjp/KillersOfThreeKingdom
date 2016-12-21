@@ -6,6 +6,11 @@ import com.tjp.card.type.CardType;
 import com.tjp.hero.Hero;
 import com.tjp.inter.IEffect;
 
+/**
+ * 杀的效果
+ * @author TangJP
+ *
+ */
 public class KillEffect implements IEffect {
 	
 	private int num;

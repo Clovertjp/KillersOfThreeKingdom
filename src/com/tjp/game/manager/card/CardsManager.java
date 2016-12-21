@@ -9,12 +9,16 @@ import java.util.Map;
 import com.tjp.card.Card;
 import com.tjp.card.type.CardColorType;
 import com.tjp.card.type.CardType;
-
+/**
+ * 卡牌管理类
+ * @author TangJP
+ *
+ */
 public class CardsManager {
 	
-	public static Map<CardType,Integer> map =new HashMap<>();
-	public List<Card> cardList=new ArrayList<>();
-	public List<Card> otherCardList=new ArrayList<>();
+	public static Map<CardType,Integer> map =new HashMap<>();//卡牌每个类型的个数
+	public List<Card> cardList=new ArrayList<>();//牌堆
+	public List<Card> otherCardList=new ArrayList<>();//弃牌堆
 	
 	static{
 		map.put(CardType.KILL, 30);
@@ -47,6 +51,11 @@ public class CardsManager {
 		Collections.shuffle(cardList);
 	}
 	
+	/**
+	 * 抽卡
+	 * @param num
+	 * @return
+	 */
 	public List<Card> drawCard(int num)
 	{
 		List<Card> list=new ArrayList<>();
@@ -88,6 +97,10 @@ public class CardsManager {
 		return list;
 	}
 	
+	/**
+	 * 弃卡
+	 * @param cards
+	 */
 	public void discard(List<Card> cards)
 	{
 		if(cards==null || cards.size()<=0)
@@ -97,6 +110,10 @@ public class CardsManager {
 		otherCardList.addAll(cards);
 	}
 	
+	/**
+	 * 弃卡
+	 * @param cards
+	 */
 	public void discard(Card cards)
 	{
 		if(cards==null)

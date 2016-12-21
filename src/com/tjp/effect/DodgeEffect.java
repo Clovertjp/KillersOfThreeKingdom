@@ -3,6 +3,11 @@ package com.tjp.effect;
 import com.tjp.hero.Hero;
 import com.tjp.inter.IEffect;
 
+/**
+ * 闪 的效果
+ * @author TangJP
+ *
+ */
 public class DodgeEffect implements IEffect {
 
 	@Override

@@ -8,7 +8,11 @@ import com.tjp.card.type.CardType;
 import com.tjp.game.manager.card.CardsManager;
 import com.tjp.inter.IEffect;
 import com.tjp.inter.IHero;
-
+/**
+ * 英雄类(后期加入其他英雄)
+ * @author TangJP
+ *
+ */
 public class Hero implements IHero {
 	
 	public Hero(String name,int maxBlood,int blood,CardsManager cardManager) {
@@ -20,14 +24,14 @@ public class Hero implements IHero {
 		cardList.addAll(this.cardManager.drawCard(4));
 	}
 	
-	private String name;
-	private int maxBlood;
-	private int blood;
-	private List<Card> cardList=new ArrayList<>();
-	private List<IEffect> effectList=new ArrayList<>();
-	private CardsManager cardManager;
-	private static List<CardType> disCardRule=new ArrayList<>();
-	private static List<CardType> playCardRule=new ArrayList<>();
+	private String name;//英雄名称
+	private int maxBlood;//最大血量
+	private int blood;//剩余血量
+	private List<Card> cardList=new ArrayList<>();//持有牌
+	private List<IEffect> effectList=new ArrayList<>();//英雄自身效果
+	private CardsManager cardManager;//卡牌管理
+	private static List<CardType> disCardRule=new ArrayList<>();//弃牌规则
+	private static List<CardType> playCardRule=new ArrayList<>();//出牌规则 杀默认最后出
 	static{
 		disCardRule.add(CardType.KILL);
 		disCardRule.add(CardType.PEACH);
@@ -88,11 +92,17 @@ public class Hero implements IHero {
 		blood=Math.min(blood+addNum, maxBlood);
 	}
 	
+	/**
+	 * 摸牌
+	 */
 	public void drawCard()
 	{
 		cardList.addAll(cardManager.drawCard(2));
 	}
 	
+	/**
+	 * 弃牌
+	 */
 	public void disCard()
 	{
 		if(cardList.size()<=blood)
@@ -141,7 +151,10 @@ public class Hero implements IHero {
 		}
 	}
 	
-	
+	/**
+	 * 出牌
+	 * @param target
+	 */
 	public void play(Hero target)
 	{
 		List<Card> delete=new ArrayList<>();
@@ -179,6 +192,9 @@ public class Hero implements IHero {
 		}
 	}
 	
+	/**
+	 * 死亡
+	 */
 	public void die()
 	{
 		List<Card> delete=new ArrayList<>();

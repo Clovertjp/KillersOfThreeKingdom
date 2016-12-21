@@ -3,6 +3,11 @@ package com.tjp.card;
 import com.tjp.card.type.CardType;
 import com.tjp.effect.AddBloodEffect;
 
+/**
+ * 桃 卡
+ * @author TangJP
+ *
+ */
 public class PeachCard extends Card {
 	public PeachCard(Integer num,Byte cardColorType) {
 		// TODO Auto-generated constructor stub

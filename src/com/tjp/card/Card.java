@@ -7,7 +7,11 @@ import com.tjp.card.type.CardColorType;
 import com.tjp.card.type.CardType;
 import com.tjp.hero.Hero;
 import com.tjp.inter.IEffect;
-
+/**
+ * 基础卡牌类
+ * @author TangJP
+ *
+ */
 public class Card {
 	
 	public Card(String cardName,int num,byte cardColorType,CardType cardType)
@@ -18,11 +22,11 @@ public class Card {
 		this.cardType=cardType;
 	}
 	
-	private String cardName;
+	private String cardName;//牌的名称
 	private int num;//点数
-	private byte cardColorType;
-	private List<IEffect> effectList=new ArrayList<>();
-	private CardType cardType;
+	private byte cardColorType;//牌的花色
+	private List<IEffect> effectList=new ArrayList<>();//牌的效果
+	private CardType cardType;//牌的类型
 	
 	
 	public String getCardName() {
@@ -58,6 +62,7 @@ public class Card {
 		this.num = num;
 	}
 	
+	//出牌
 	public void play(Hero hero,Hero target,List<Card> delete)
 	{
 		boolean del=true;

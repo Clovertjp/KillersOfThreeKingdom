@@ -5,7 +5,11 @@ import java.util.List;
 import com.tjp.card.Card;
 import com.tjp.hero.Hero;
 import com.tjp.inter.IEffect;
-
+/**
+ * 加血效果
+ * @author TangJP
+ *
+ */
 public class AddBloodEffect  implements IEffect {
 	
 	public int num;

@@ -3,7 +3,11 @@ package com.tjp.card;
 import com.tjp.card.type.CardColorType;
 import com.tjp.card.type.CardType;
 import com.tjp.effect.KillEffect;
-
+/**
+ * 杀 卡
+ * @author TangJP
+ *
+ */
 public class KillCard extends Card {
 	
 	public KillCard(Integer num,Byte cardColorType) {

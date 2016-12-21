@@ -3,7 +3,11 @@ package com.tjp.card;
 import com.tjp.card.type.CardColorType;
 import com.tjp.card.type.CardType;
 import com.tjp.effect.DodgeEffect;
-
+/**
+ * 闪 卡
+ * @author TangJP
+ *
+ */
 public class DodgeCard extends Card {
 	
 	public DodgeCard(Integer num,Byte cardColorType) {
